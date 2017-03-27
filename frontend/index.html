@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>My Portfolio</title>
+  <title>Gabriel Alacchi</title>
   <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
   <link rel="icon" href="favicon.ico" type="image/x-icon">
   <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
@@ -48,9 +48,14 @@
 
 <div id="lead">
   <div id="lead-content">
-    <h1>Gabriel Alacchi</h1>
-    <h2>Software Engineer</h2>
-    <a href="#" class="btn-rounded-white">Download Resume</a>
+    <div>
+      <h1>Gabriel Alacchi</h1>
+      <h2>Software Engineer</h2>
+      <img class="profile-pic" src="images/me.jpg" />
+    </div>
+    <div>
+      <a href="#" class="btn-rounded-white">Download Resume</a>
+    </div>
   </div>
   <!-- End #lead-content -->
   
@@ -155,7 +160,7 @@
   
       <div class="project shadow-large">
         <div class="project-image">
-          <img src="images/project.jpg"/>
+          <img src="images/skyline.jpg"/>
         </div>
         <!-- End .project-image -->
         <div class="project-info">
@@ -164,11 +169,31 @@
             Built at McHacks 2017, my team and I developed a lightweight web applications where users
             can upload and image and stylize it to resemble any of a collection of 9 paintings.
             We developed code to train a generative convolutional neural network to learn style
-            transformations, but due to time constraints had to use pretrained models found here.
+            transformations, but due to time constraints had to use pretrained models found
+            <a href="https://github.com/junrushao1994/fast-neural-style.tf">here.</a>
             I'm currently working on implementing research by Dumoulin, et al. which uses a single trained
             network to generate images with any of 32 styles.
           </p>
-          <a href="#">View Project</a>
+          <a href="https://paint-me.me">Create Your Own Painting</a>
+        </div>
+        <!-- End .project-info -->
+      </div>
+      <!-- End .project -->
+  
+      <div class="project shadow-large">
+        <div class="project-image">
+          <img src="images/gallery.jpg"/>
+        </div>
+        <!-- End .project-image -->
+        <div class="project-info">
+          <h3>Alfred, Slack Integration - 2016</h3>
+          <p>
+            Slack is a messaging app for teams with an open integrations
+            system. We built support ticketing system developed to bring an
+            easy to use support ticket system into Slack. It was developed over the course
+            of 24 hours using the Slack API, Node JS and MySQL.
+          </p>
+          <a href="https://devpost.com/software/alfred-customer-support-with-a-little-more-slack">View Devpost</a>
         </div>
         <!-- End .project-info -->
       </div>
@@ -187,7 +212,7 @@
             to a web app in real time for visualization. Frames were then buffered and then displayed in full 3D
             using three.js.
           </p>
-          <a href="#">View Project</a>
+          <a href="https://github.com/gabrielalacchi/nbody-hack">View Code <i class="fa fa-github"></i></a>
         </div>
         <!-- End .project-info -->
       </div>

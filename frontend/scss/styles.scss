@@ -11,6 +11,10 @@
     Gulp and send to the /css folder which is then loaded on the page.
 */
 /*
+    Edited By: Gabriel Alacchi
+    Reason: Fine tuning for my own profile website
+*/
+/*
     File Contents:
 
         1. Variables
@@ -137,6 +141,11 @@ body {
   100% {
     transform: translateY(0);
   }
+}
+
+.profile-pic {
+    margin: 1em;
+    max-width: 70%;
 }
 
 header {
@@ -670,7 +679,7 @@ footer {
     p {
         color: $text;
         margin: 0 0 15px 0;
-        font-size: 1em;
+        font-size: 1.0em;
     }
 }
 
