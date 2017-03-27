@@ -33,11 +33,11 @@
 */
 
 // Define base and accent colors
-$base-color: #3498db;
+$base-color: #A9927D;
 $base-color-hover: darken($base-color, 10%);
 
 // Define background colors
-$background: #fff;
+$background: #F2F4F3;
 $background-alt: #f2f2f5;
 
 // Define border colors
@@ -661,7 +661,7 @@ footer {
     padding: 15px;
 
     h3 {
-        font-size: 1.5em;
+        font-size: 1.7em;
         font-weight: 300;
         color: $heading;
         margin: 0 0 15px 0;
@@ -670,7 +670,7 @@ footer {
     p {
         color: $text;
         margin: 0 0 15px 0;
-        font-size: 0.9em;
+        font-size: 1em;
     }
 }
 
