@@ -1,0 +1,47 @@
+{
+  "About": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur in iaculis ex. Etiam volutpat laoreet urna. Morbi ut tortor nec nulla commodo malesuada sit amet vel lacus. Fusce eget efficitur libero. Morbi dapibus porta quam laoreet placerat. Donec eu vehicula neque. Donec viverra lorem nunc, tempus euismod eros sollicitudin ut. Quisque et tincidunt libero. Donec id pharetra justo. Proin euismod lacinia dolor, eu scelerisque justo tempus pharetra. Vivamus nunc justo, finibus ut nisl sed, euismod rhoncus nulla. Proin sed magna egestas, egestas ante et, congue eros. In consequat, mauris dapibus tincidunt suscipit, ex libero aliquet diam, at maximus risus enim non leo.",
+  "ProfilePicURL": "images/me.jpg",
+  "ResumeURL": "resume.pdf",
+  "Experience": [
+    {
+      "Company": "Distribution Online",
+      "Timeline": "2014 - PRESENT",
+      "Title": "Software Developer",
+      "Description": "Developing C++ and C# .NET applications for managing in-house workflow. Integrating new functionality over an existing ERP system using various desktop and web technogolies. Monitoring an Asterisk phone system in real time. Developing automated labeling infrastructure using Bartender."
+    }
+  ],
+  "Education": [
+    {
+      "Name": "McGill University",
+      "Timeline": "September 2014 - PRESENT",
+      "Major": "B. Eng",
+      "DescriptionList": [
+        "Software Engineering Major",
+        "Class of 2020"
+      ]
+    }
+  ],
+  "Projects": [
+    {
+      "Name": "pAInt",
+      "Year": 2017,
+      "ImageURL": "images/skyline.jpg",
+      "Description": "Built at McHacks 2017, my team and I developed a lightweight web application where users can upload and image and stylize it to resemble any of a collection of 9 paintings. We developed code to train a generative convolutional neural network to perform this task. Currently I am working on implementing research by Dumoulin, et al. which uses a single trained network to generate images with any of 32 styles.",
+      "LinkURL": "https://paint-me.me",
+      "LinkText": "Create Your Own Painting"
+    }
+  ],
+  "Skills": [
+    "C++",
+    "C#",
+    "Java",
+    "JavaScript"
+  ],
+  "SocialLinks": [
+    {
+      "Link": "https://github.com/gabrielalacchi",
+      "IconClass": "fa-github"
+    }
+  ],
+  "CopyrightYear": 2017
+}
