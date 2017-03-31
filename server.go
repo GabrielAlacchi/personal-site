@@ -1,37 +1,35 @@
 package main
 
 import (
-	"github.com/go-martini/martini"
+	"github.com/gorilla/mux"
+	"net/http"
+	"time"
+	"log"
+	"github.com/gabrielalacchi/personal-site/app/controller"
 )
 
 func main() {
-	m := martini.Classic()
-	m.Get("/", getHandler())
 
-	css := martini.Static("frontend/css", martini.StaticOptions {
-		Prefix: "/css",
+	indexHandler := controller.IndexHandler
+	staticHandler := http.FileServer(http.Dir("frontend/www"))
+
+	r := mux.NewRouter()
+	r.PathPrefix("/").HandlerFunc(func (res http.ResponseWriter, req *http.Request) {
+
+		if req.URL.Path == "/" || req.URL.Path == "/index.html" {
+			indexHandler(res, req)
+		} else {
+			staticHandler.ServeHTTP(res, req)
+		}
+
 	})
-	m.Use(css)
 
-	images := martini.Static("frontend/images", martini.StaticOptions{
-		Prefix: "/images",
-	})
-	m.Use(images)
+	srv := &http.Server{
+		Handler: r,
+		Addr: "localhost:3000",
+		WriteTimeout: 15 * time.Second,
+		ReadTimeout: 15 * time.Second,
+	}
 
-	libs := martini.Static("frontend/libs", martini.StaticOptions{
-		Prefix: "/libs",
-	})
-	m.Use(libs)
-
-	js := martini.Static("frontend/js", martini.StaticOptions{
-		Prefix: "/js",
-	})
-	m.Use(js)
-
-	favicon := martini.Static("frontend/favicon.ico", martini.StaticOptions{
-		Prefix: "/favicon.ico",
-	})
-	m.Use(favicon)
-
-	m.Run()
+	log.Fatal(srv.ListenAndServe())
 }

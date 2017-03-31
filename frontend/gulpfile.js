@@ -8,7 +8,7 @@ var autoprefixer = require('gulp-autoprefixer');
 var browserSync = require('browser-sync').create();
 
 gulp.task('scripts', function() {
-  return gulp.src('js/scripts.js')
+  return gulp.src('js/index.js')
     .pipe(plumber(plumber({
       errorHandler: function (err) {
         console.log(err);
@@ -33,19 +33,19 @@ gulp.task('styles', function() {
     })))
     .pipe(sass({outputStyle: 'compressed'}))
     .pipe(autoprefixer())
-    .pipe(gulp.dest('css'))
+    .pipe(gulp.dest('www/css'))
     .pipe(browserSync.stream());
 });
 
 gulp.task('update', function() {
-  return gulp.src('*.html')
+  return gulp.src('www/*.html')
     .pipe(browserSync.stream());
 });
 
 gulp.task('watch', ['scripts', 'styles'], function() {
   browserSync.init({
     server: {
-      baseDir: "./"
+      baseDir: "./www"
     }
   });
 

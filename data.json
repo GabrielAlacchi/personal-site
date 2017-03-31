@@ -26,7 +26,7 @@
       "Name": "pAInt",
       "Year": 2017,
       "ImageURL": "images/skyline.jpg",
-      "Description": "Built at McHacks 2017, my team and I developed a lightweight web application where users can upload and image and stylize it to resemble any of a collection of 9 paintings. We developed code to train a generative convolutional neural network to perform this task. Currently I am working on implementing research by Dumoulin, et al. which uses a single trained network to generate images with any of 32 styles.",
+      "Description": "Built at McHacks 2017, my team and I developed a lightweight web application where users can upload and image and stylize it to resemble any of a collection of 9 paintings. We developed code to train a generative convolutional neural network to perform this task. Due to hackathon time constraints we had to use models available <a href=\"https://github.com/junrushao1994/fast-neural-style.tf\">here</a>. However I've worked on implementing research by Dumoulin et. al seen <a href=\"https://arxiv.org/abs/1610.07629\">here</a> which allows for 32 styles to be learned by a single neural network.",
       "LinkURL": "https://paint-me.me",
       "LinkText": "Create Your Own Painting"
     }
@@ -42,6 +42,5 @@
       "Link": "https://github.com/gabrielalacchi",
       "IconClass": "fa-github"
     }
-  ],
-  "CopyrightYear": 2017
+  ]
 }
