@@ -6,6 +6,7 @@ import (
 	"time"
 	"log"
 	"github.com/gabrielalacchi/personal-site/app/controller"
+	"github.com/gabrielalacchi/personal-site/app/routers"
 )
 
 func main() {
@@ -14,15 +15,9 @@ func main() {
 	staticHandler := http.FileServer(http.Dir("frontend/www"))
 
 	r := mux.NewRouter()
-	r.PathPrefix("/").HandlerFunc(func (res http.ResponseWriter, req *http.Request) {
-
-		if req.URL.Path == "/" || req.URL.Path == "/index.html" {
-			indexHandler(res, req)
-		} else {
-			staticHandler.ServeHTTP(res, req)
-		}
-
-	})
+	r.HandleFunc("/", indexHandler)
+	r.PathPrefix("/admin").Handler(http.StripPrefix("/admin", routers.AdminRouter()))
+	r.NotFoundHandler = staticHandler
 
 	srv := &http.Server{
 		Handler: r,

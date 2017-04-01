@@ -3,6 +3,7 @@ package model
 import (
 	"html/template"
 	"time"
+	"gopkg.in/mgo.v2/bson"
 )
 
 type Job struct {
@@ -24,7 +25,7 @@ type Project struct {
 	Year int `json:"Year" bson:"Year"`
 	ImageURL string `json:"ImageURL" bson:"ImageURL"`
 	Description string `json:"Description" bson:"Description"`
-	Body template.HTML `json:"Body" bson:"Body"`
+	Body template.HTML
 	LinkURL string `json:"LinkURL" bson:"LinkURL"`
 	LinkText string `json:"LinkText" bson:"LinkText"`
 	LinkIconClass string `json:"LinkIconClass" bson:"LinkIconClass"`
@@ -37,6 +38,7 @@ type Social struct {
 }
 
 type PageSource struct {
+	Id bson.ObjectId `bson:"_id"`
 	About string `json:"About" bson:"About"`
 	ProfilePicURL string `json:"ProfilePicURL" bson:"ProfilePicURL"`
 	ResumeURL string `json:"ResumeURL" bson:"ResumeURL"`
@@ -59,5 +61,18 @@ func (index *PageSource) Query() error {
 	}
 
 	index.CopyrightYear = time.Now().Year()
+	return err
+}
+
+func (index PageSource) Update() error {
+	sess := getSession()
+
+	pagedata := sess.DB("alacchi-com").C("pagedata")
+
+	err := pagedata.Update(bson.M{
+		"_id": index.Id,
+	},
+	index)
+
 	return err
 }

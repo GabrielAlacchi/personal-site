@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Gabriel Alacchi Admin</title>
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+        <link rel="icon" href="/favicon.ico" type="image/x-icon">
+        <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+        <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+        <link href="/css/styles.css" rel="stylesheet">
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+</head>
+<body>
+    <div id="lead">
+        <div id="lead-content">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-4 col-md-offset-4">
+                        <div class="account-wall">
+                            <form action="/admin/login" method="POST" class="form-signin">
+                                <input type="text" name="email" value="{{.Email}}" class="form-control" placeholder="Email" required autofocus>
+                                <input type="password" name="password" class="form-control" placeholder="Password" required>
+                                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                                    Sign in
+                                </button>
+                            </form>
+                            <form action="/" method="GET">
+                                <button class="btn btn-lg btn-danger btn-block">Go Home And Get Your Shinebox</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                {{ if .Failure }}
+                    <p style="font-size: 1.4em; font-weight: bold;">{{ .Message }}</p>
+                    <img src="https://s-media-cache-ak0.pinimg.com/736x/40/a6/76/40a676eac052503c5d7c06abc8f6fe65.jpg" width="300px">
+                {{ end }}
+            </div>
+        </div>
+        <!-- End #lead-content -->
+
+        <div id="lead-overlay"></div>
+        <!-- End #lead-down -->
+    </div>
+    <!-- End #lead -->
+</body>
+</html>

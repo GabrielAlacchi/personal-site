@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Gabriel Alacchi</title>
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="/css/styles.css" rel="stylesheet">
+</head>
+
+<body>
+
+<div id="mobile-menu-open" class="shadow-large">
+    <i class="fa fa-bars" aria-hidden="true"></i>
+</div>
+<!-- End #mobile-menu-toggle -->
+<header>
+    <div id="mobile-menu-close">
+        <span>Close</span> <i class="fa fa-times" aria-hidden="true"></i>
+    </div>
+    <ul id="menu" class="shadow">
+        <li>
+            <a href="#about">About</a>
+        </li>
+        <li>
+            <a href="#experience">Experience</a>
+        </li>
+        <li>
+            <a href="#education">Education</a>
+        </li>
+        <li>
+            <a href="#projects">Projects</a>
+        </li>
+        <li>
+            <a href="#skills">Skills</a>
+        </li>
+        <li>
+            <a href="#contact">Contact</a>
+        </li>
+    </ul>
+</header>
+<!-- End header -->
+
+<div id="lead">
+    <div id="lead-content">
+        <div>
+            <h1>Gabriel Alacchi</h1>
+            <h2>Software Engineer</h2>
+            <img id="profile-picture" class="profile-pic" src="{{ .ProfilePicURL }}" />
+            <label>Profile Pic URL: <input id="profile-pic-url" type="text" value="{{ .ProfilePicURL }}"></label>
+        </div>
+        <div>
+            <label>Resume URL: <input id="resume-url" type="text" value="{{ .ResumeURL }}"></label>
+        </div>
+
+        <button id="save-button" class="btn btn-danger" style="font-size: 24px;">Save</button>
+        <form method="GET" action="/admin/logoff">
+            <button class="btn btn-default">Logoff</button>
+        </form>
+    </div>
+    <!-- End #lead-content -->
+
+    <div id="lead-overlay"></div>
+
+    <div id="lead-down">
+            <span>
+                <i class="fa fa-chevron-down" aria-hidden="true"></i>
+            </span>
+    </div>
+    <!-- End #lead-down -->
+</div>
+<!-- End #lead -->
+
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <h2 class="heading">About Me</h2>
+            </div>
+            <div class="col-md-8">
+                <textarea id="about-text" cols="80" rows="8">{{ .About }}</textarea>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End #about -->
+
+<div id="experience" class="background-alt">
+    <h2 class="heading">Experience</h2>
+
+    <div id="experience-timeline">
+        {{ range $job := .Experience}}
+        <div class="job-data">
+            <label>Timeline: <input name="timeline" type="text" value="{{$job.Timeline}}"></label><br>
+            <label>Company Name: <input name="company" type="text" value="{{ $job.Company }}"></label><br>
+            <label>Job Title: <input name="title" type="text" value="{{ $job.Title }}"></label><br>
+            <textarea rows="4" cols="50">{{$job.Description}}</textarea>
+        </div>
+        {{ end }}
+
+    </div>
+
+    <button id="add-job" class="btn btn-default">+</button>
+    <button id="remove-job" class="btn btn-default">-</button>
+
+</div>
+<!-- End #experience -->
+
+<div id="education">
+    <h2 class="heading">Education</h2>
+
+    <div id="education-list">
+        {{ range $school := .Education}}
+        <div class="education-block">
+            <label>Timeline: <input name="timeline" type="text" value="{{$school.Timeline}}"></label><br>
+            <label>School Name: <input name="name" type="text" value="{{$school.Name}}"></label><br>
+            <label>Major: <input name="major" type="text" value="{{$school.Major}}"></label><br>
+            <label>Description List (New Line is a bullet point)</label><br>
+            <textarea rows="4" cols="50">{{ range $desc := $school.DescriptionList }}{{ $desc }}{{ "\n" }}{{ end }}</textarea>
+        </div>
+        {{ end }}
+    </div>
+
+    <button id="add-school" class="btn btn-default">+</button>
+    <button id="remove-school" class="btn btn-default">-</button>
+
+</div>
+<!-- End #education -->
+
+<div id="projects" class="background-alt">
+    <h2 class="heading">Projects</h2>
+    <div class="container">
+        <div id="project-list" class="row">
+
+            {{ range $project := .Projects }}
+            <div class="project shadow-large">
+                <div class="project-image">
+                    <img src="{{ $project.ImageURL }}" /><br>
+                </div>
+                <!-- End .project-image -->
+                <div class="project-info">
+                    <label>Year: <input name="year" type="number" value="{{$project.Year}}"></label><br>
+                    <label>Project Name: <input name="name" type="text" value="{{ $project.Name }}"></label><br>
+                    <label>Link Text: <input name="link-text" type="text" value="{{ $project.LinkText }}"></label><br>
+                    <label>Link URL: <input name="link-url" type="text" value="{{ $project.LinkURL }}"></label><br>
+                    <label>Image URL: <input name="image-url" type="text" value="{{ $project.ImageURL }}"></label><br>
+                    <textarea rows="4" cols="50">{{ $project.Description }}</textarea>
+                </div>
+                <!-- End .project-info -->
+            </div>
+            <!-- End .project -->
+            {{ end }}
+
+        </div>
+
+        <button id="add-project" class="btn btn-default">+</button>
+        <button id="remove-project" class="btn btn-default">-</button>
+
+    </div>
+</div>
+<!-- End #projects -->
+
+<div id="skills">
+    <h2 class="heading">Skills</h2>
+    <ul id="skill-list">
+        {{ range $skill := .Skills }}
+        <li class="skill-item"><input type="text" value="{{ $skill }}" size="7"></li>
+        {{ end }}
+    </ul>
+
+    <button id="add-skill" class="btn btn-default">+</button>
+    <button id="remove-skill" class="btn btn-default">-</button>
+
+</div>
+<!-- End #skills -->
+
+<div id="social-link-form">
+
+    <div id="social-link-list">
+        {{ range $social := .SocialLinks }}
+        <div class="social-link-entry">
+            <input type="text" name="icon-link" value="{{$social.Link}}">
+            <input type="text" name="icon-class" value="{{$social.IconClass}}">
+        </div>
+        {{ end }}
+    </div>
+
+    <button id="add-social" class="btn btn-default">+</button>
+    <button id="remove-social" class="btn btn-default">-</button>
+
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-5 copyright">
+                <p>
+                    Copyright &copy; 2017 Gabriel Alacchi
+                </p>
+            </div>
+            <div class="col-sm-2 top">
+                    <span id="to-top">
+                        <i class="fa fa-chevron-up" aria-hidden="true"></i>
+                    </span>
+            </div>
+            <div class="col-sm-5 social">
+                <ul id="social-links">
+                    {{ range $social := .SocialLinks }}
+                    <li>
+                        <a href="{{ $social.Link }}" target="_blank"><i class="fa {{ $social.IconClass }}" aria-hidden="true"></i></a>
+                    </li>
+                    {{ end }}
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- End footer -->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="/js/admin.js"></script>
+</body>
+
+</html>
