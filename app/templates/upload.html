@@ -19,7 +19,7 @@
         <div class="col-md-2">
             <ul>
                 {{ range $file := .Files }}
-                <li>{{ $file }}</li>
+                <li><a href="/files/{{ $file }}">{{ $file }}</a></li>
                 {{ end }}
             </ul>
         </div>
