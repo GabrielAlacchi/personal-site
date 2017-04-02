@@ -17,6 +17,4 @@ RUN go get github.com/gorilla/mux \
 
 RUN go install
 
-ENV MONGO_URL mongodb://database:27017
-
 ENTRYPOINT ["/go/bin/personal-site"]

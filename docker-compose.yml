@@ -10,12 +10,13 @@ services:
     image: gabrielalacchi/personal-site
     volumes:
       - ./files/:/go/src/github.com/gabrielalacchi/personal-site/frontend/www/files
+      - /etc/letsencrypt/live/alacchi.com/:/alacchi.com/
     ports:
       - 443:443
     environment:
       - MONGO_URL=mongodb://database:27017
-      - CERT_FILE=/etc/letsencrypt/live/alacchi.com/fullchain.pem
-      - KEY_FILE=/etc/letsencrypt/live/alacchi.com/privkey.pem
+      - CERT_FILE=/alacchi.com/fullchain.pem
+      - KEY_FILE=/alacchi.com/privkey.pem
     depends_on:
       - database
 

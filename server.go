@@ -34,8 +34,7 @@ func main() {
 		ReadTimeout: 15 * time.Second,
 	}
 
-	srv.ListenAndServeTLS(cert, key)
 
-	log.Println("[server] Binding to port 3000")
-	log.Fatal(srv.ListenAndServe())
+	log.Println("[server] Binding to port 443")
+	log.Fatal(srv.ListenAndServeTLS(cert, key))
 }
