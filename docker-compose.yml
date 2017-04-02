@@ -10,7 +10,7 @@ services:
     image: gabrielalacchi/personal-site
     volumes:
       - ./files/:/go/src/github.com/gabrielalacchi/personal-site/frontend/www/files
-      - /etc/letsencrypt/live/alacchi.com/:/alacchi.com/
+      - /etc/ssl/alacchi.com/:/alacchi.com/
     ports:
       - 443:443
     environment:
