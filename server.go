@@ -7,7 +7,14 @@ import (
 	"log"
 	"github.com/gabrielalacchi/personal-site/app/controller"
 	"github.com/gabrielalacchi/personal-site/app/routers"
+	"os"
 )
+
+func getSslEnv() (string, string) {
+	certFile := os.Getenv("CERT_FILE")
+	keyFile := os.Getenv("KEY_FILE")
+	return certFile, keyFile
+}
 
 func main() {
 
@@ -19,12 +26,15 @@ func main() {
 	r.PathPrefix("/admin").Handler(http.StripPrefix("/admin", routers.AdminRouter()))
 	r.NotFoundHandler = staticHandler
 
+	cert, key := getSslEnv()
 	srv := &http.Server{
 		Handler: r,
-		Addr: "0.0.0.0:3000",
+		Addr: "0.0.0.0:443",
 		WriteTimeout: 15 * time.Second,
 		ReadTimeout: 15 * time.Second,
 	}
+
+	srv.ListenAndServeTLS(cert, key)
 
 	log.Println("[server] Binding to port 3000")
 	log.Fatal(srv.ListenAndServe())

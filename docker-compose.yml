@@ -7,12 +7,19 @@ services:
       - ./data/:/data/db
 
   website:
-    build: .
+    image: gabrielalacchi/personal-site
     volumes:
       - ./files/:/go/src/github.com/gabrielalacchi/personal-site/frontend/www/files
     ports:
-      - 3000:3000
+      - 443:443
     environment:
       - MONGO_URL=mongodb://database:27017
+      - CERT_FILE=/etc/letsencrypt/live/alacchi.com/fullchain.pem
+      - KEY_FILE=/etc/letsencrypt/live/alacchi.com/privkey.pem
     depends_on:
       - database
+
+  redirect:
+    build: ./redirect/
+    ports:
+      - 80:80
