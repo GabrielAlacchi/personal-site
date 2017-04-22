@@ -1,0 +1,18 @@
+build:
+  version: 2016-03-14
+  steps:
+    builder:
+      name: gabrielalacchi/personal-site-builder
+      dockerfile: Dockerfile.builder
+      artifacts:
+        - /go/bin/personalsite
+    runtime_dev:
+      name: gabrielalacchi/personal-site:dev
+      dockerfile: Dockerfile.dev
+      depends_on:
+        - builder
+    runtime_prod:
+      name: gabrielalacchi/personal-site
+      dockerfile: Dockerfile.prod
+      depends_on:
+        - builder

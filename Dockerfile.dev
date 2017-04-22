@@ -1,0 +1,13 @@
+FROM buildpack-deps:jessie-scm
+
+EXPOSE 3000
+
+ADD personalsite /usr/bin/personalsite
+
+COPY frontend/www/ /app/frontend/www/
+COPY app/templates/ /app/app/templates/
+VOLUME /app/frontend/www/files/
+
+WORKDIR /app/
+
+ENTRYPOINT ["/usr/bin/personalsite"]

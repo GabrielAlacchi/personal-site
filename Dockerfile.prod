@@ -1,0 +1,10 @@
+FROM alpine:3.5
+
+COPY app/templates/ /app/app/templates/
+COPY frontend/www/ /app/frontend/www/
+VOLUME /app/frontend/www/files/
+ADD personalsite /usr/bin/personalsite
+
+WORKDIR /app/
+
+CMD ["personalsite"]

@@ -7,20 +7,20 @@ services:
       - ./data/:/data/db
 
   website:
-    image: gabrielalacchi/personal-site
+    image: gabrielalacchi/personal-site:dev
     volumes:
       - ./files/:/app/frontend/www/files
-      - /etc/ssl/alacchi.com/:/alacchi.com/
+      - /etc/ssl/localhost/:/localhost/
     ports:
-      - 443:443
+      - 8443:443
     environment:
       - MONGO_URL=mongodb://database:27017
-      - CERT_FILE=/alacchi.com/fullchain.pem
-      - KEY_FILE=/alacchi.com/privkey.pem
+      - CERT_FILE=/localhost/localhost.crt
+      - KEY_FILE=/localhost/localhost.key
     depends_on:
       - database
 
   redirect:
     build: ./redirect/
     ports:
-      - 80:80
+      - 8080:80
